@@ -260,23 +260,17 @@ export class Template extends Service {
         : undefined;
 
     const {
-      [ZOTERO_KEY_FIELDNAME]: _key,
-      [ZOTERO_ATCHS_FIELDNAME]: originalAttachments,
       ...frontmatter
     } = parseYaml(body);
 
     return {
       mode: raw ? "raw" : "parsed",
       yaml: [
-        `${ZOTERO_KEY_FIELDNAME}: ${zoteroKey}`,
-        `${ZOTERO_ATCHS_FIELDNAME}: ${originalAttachments ?? zoteroAtchIds}`,
         body.trim(),
         "",
       ].join("\n"),
       data: {
         // Required keys for zotero literature note
-        [ZOTERO_KEY_FIELDNAME]: zoteroKey,
-        [ZOTERO_ATCHS_FIELDNAME]: zoteroAtchIds,
         ...filter(
           frontmatter,
           (v) => !(v === "" || v === null || v === undefined),
