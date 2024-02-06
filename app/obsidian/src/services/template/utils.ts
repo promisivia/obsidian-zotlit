@@ -63,7 +63,7 @@ export const fileLink = (
   }
 };
 export const renderFilename = (name: string): string =>
-  filenamify(name, { replacement: "_" });
+  filenamify(name, { replacement: "" });
 
 export const isImageAnnot = (item: unknown): item is AnnotationInfo =>
   isAnnotationItem(item) && item.type === AnnotationType.image;
